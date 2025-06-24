@@ -62,7 +62,148 @@ struct Queue{
 
 int main(int argc, char const *argv[])
 {
-    
+        Queue test;
+    char pilihan;
+    do
+    {
+        test.showmMenu();
+        std::cin >> pilihan;
+        std::cin.ignore();
+        switch (pilihan)
+        {
+        case '1':
+            {
+            system("cls");
+            std::string nama, desc;
+            int telp;
+            std::cout << "Nama: "; std::getline(std::cin, nama);
+            std::cout << "No Telepon: "; std::cin >> telp; std::cin.ignore();
+            std::cout << "Deskripsi: "; std::getline(std::cin, desc);
+            test.push(nama, telp, desc);
+            std::cout << "Data berhasil ditambahkan!\n";
+            getch();
+            }
+            break;
+        case '2':
+            {
+            system("cls");
+            test.pop();
+            std::cout << "Data pertama dihapus!\n";
+            getch();
+            }
+            break;
+        case '3':
+            {
+            system("cls");
+            test.show();
+            getch();
+            }
+            break;
+        case '4':
+            {
+            system("cls");
+            std::cout << "Jumlah data: " << test.size() << std::endl;
+            getch();
+            }
+            break;
+        case '5':
+            {
+            system("cls");
+            size_t idx;
+            std::cout << "Masukkan index yang ingin dihapus (mulai dari 1): ";
+            std::cin >> idx; std::cin.ignore();
+            test._remove(idx);
+            getch();
+            }
+            break;
+        case '6':
+            {
+            system("cls");
+            size_t idx;
+            std::string nama, desc;
+            int telp;
+            std::cout << "Masukkan index untuk insert (mulai dari 1): ";
+            std::cin >> idx; std::cin.ignore();
+            std::cout << "Nama: "; std::getline(std::cin, nama);
+            std::cout << "No Telepon: "; std::cin >> telp; std::cin.ignore();
+            std::cout << "Deskripsi: "; std::getline(std::cin, desc);
+            test._insert(idx, nama, telp, desc);
+            getch();
+            }
+            break;
+        case '7':
+            {
+            system("cls");
+            size_t idx;
+            int pilihanStatus;
+            std::cout << "Masukkan index data yang ingin diupdate statusnya (mulai dari 1): ";
+            std::cin >> idx; std::cin.ignore();
+            std::cout << "Pilih status baru:\n";
+            std::cout << "1. Pending\n";
+            std::cout << "2. Proses\n";
+            std::cout << "3. Selesai\n";
+            std::cout << "Pilihan: ";
+            std::cin >> pilihanStatus; std::cin.ignore();
+            Status newStatus;
+            switch (pilihanStatus) {
+                case 1: newStatus = PENDING; break;
+                case 2: newStatus = PROSES; break;
+                case 3: newStatus = SELESAI; break;
+                default: 
+                std::cout << "Pilihan tidak valid!\n";
+                continue;
+            }
+            test.updateStatus(idx-1, newStatus);
+            std::cout << "Status berhasil diupdate!\n";
+            getch();
+            }
+            break;
+        case '8':
+            {
+            system("cls");
+            int pilihanStatus;
+            std::cout << "Pilih status untuk menampilkan data:\n";
+            std::cout << "1. Pending\n";
+            std::cout << "2. Proses\n";
+            std::cout << "3. Selesai\n";
+            std::cout << "Pilihan: ";
+            std::cin >> pilihanStatus; std::cin.ignore();
+            Status status;
+            switch (pilihanStatus) {
+                case 1: status = PENDING; break;
+                case 2: status = PROSES; break;
+                case 3: status = SELESAI; break;
+                default: 
+                std::cout << "Pilihan tidak valid!\n";
+                continue;
+            }
+            test.showBasedOnStatus(status);
+            getch();
+            }
+            break;
+            case '9':
+            {
+            system("cls");
+            std::string desc;
+            int pilihanStatus;
+            std::cout << "Tulis deskripsi data yang ingin dicari: ";
+            std::cin >> desc; std::cin.ignore();
+            test.showBasedOnDesc(desc);
+            getch();
+            }
+            break;
+        case '0':
+            system("cls");
+            std::cout << "Keluar program.\n";
+            break;
+        
+        default:
+            system("cls");
+            std::cout<<"Pilihan Tidak Tersedia";
+            getch();
+            break;
+        }
+    } while (pilihan != '0');
     return 0;
 }
 
