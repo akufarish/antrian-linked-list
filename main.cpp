@@ -81,3 +81,31 @@ void Queue::showmMenu() {
     std::cout << "\n==============================\n";
     std::cout << "Pilih menu: ";
 }
+
+void Queue::push(const std::string &name, const int phoneNum, const std::string &desc){
+  /*
+    Fungsi untuk melakukan push data
+    */
+
+  Node *newNode = new Node();
+  time_t currentTimeStamp;
+
+  newNode->name = name;
+  newNode->phoneNum = phoneNum;
+  newNode->desc = desc;
+  newNode->time = time(&currentTimeStamp);
+  newNode->status = PENDING;
+
+  // Handle jika pertama kali push(index 0)
+  if(head == nullptr){
+    head = newNode;
+    tail = newNode;
+    return;
+  }
+  
+  Node *current = head;
+  while(current -> next != nullptr){
+    current = current -> next;
+  }
+  current -> next = newNode;
+}
