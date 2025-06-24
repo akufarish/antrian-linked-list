@@ -2,6 +2,7 @@
 #include <string>
 #include <ctime>
 #include <map>
+#include <conio.h>
 
 // Struct data
 enum Status { PENDING, PROSES, SELESAI };
@@ -118,8 +119,29 @@ bool Queue::_isNull(){
     if(head == nullptr)
     {
         std::cerr << "Error: Require data not satisfied, abort function instead!" << std::endl;
-        getchars();
+        getch();
         return true;
     }
     return false;
+}
+
+void Queue::pop(){
+  /*
+    Fungsi untuk melakukan pop data
+  */
+
+
+  if(_isNull())
+  {
+    return;
+  }
+
+  Node *tmp = head;
+  // Handle jika yang di pop merupakan data terakhir
+  if(tmp == tail)
+  {
+    tail = nullptr;
+  }
+  head = head->next;
+  delete tmp;
 }
