@@ -453,3 +453,19 @@ void  Queue::showBasedOnDesc(std::string desc) {
     ++i;
   }
 }
+
+size_t Queue::size(){
+  /* 
+    Fungsi yang mengembalikan jumlah elemen dari Queue.
+    Dengan cara melakukan pengecekan berulang pada setian node next.
+  */
+
+  size_t i = 0;
+  Node *current = head;
+  while(current != nullptr)
+  {
+    ++i;
+    current = current -> next;
+  }
+  return i;
+}
