@@ -206,3 +206,38 @@ void Queue::show(){
         ++i;
     }
 }
+
+void Queue::_insert(const size_t index, const std::string &name, const int phoneNum, const std::string &desc) {
+  /*
+    Fungsi untuk memasukkan data pada indeks tertentu
+    Fungsi ini memiliki behavior dimana dia tidak bisa melakukan fungsionalitas yang sama dengan push
+  */
+
+    std::cerr << "Warning: Insert isn't a original function from Queue" << std::endl;
+    getch();
+
+    if(index >= size() || head == nullptr)
+    {
+        std::cerr << "Error: Unexpected Behavior, Use push instead!" << std::endl;
+        getch();
+        return;
+    }
+
+  time_t currentTimeStamp;
+  Node* newNode = new Node();
+
+  newNode->name = name;
+  newNode->desc = desc;
+  newNode->phoneNum = phoneNum;
+  newNode->time = time(&currentTimeStamp);
+
+  Node* current = head;
+  
+  for(size_t i = 1; i < index && current != nullptr; i++) // i dimulai dari satu karena current dimulai dari head
+  {
+    current = current->next;
+  }
+
+  newNode->next = current->next;
+  current->next = newNode;
+}
