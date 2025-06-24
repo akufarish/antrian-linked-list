@@ -286,3 +286,29 @@ void Queue::showBasedOnStatus(Status status) {
     ++i;
   }
 }
+
+void  Queue::showBasedOnDesc(std::string desc) {
+    if (_isNull()) 
+    {
+        std::cerr << "Data Kosong" << std::endl;
+        getch();
+        return;
+    }
+
+    Node* current = head;
+    size_t i = 1;
+
+    
+  while (current != nullptr) {
+    if (current->desc == desc) {
+      std::cout << "Data ke-" << i << std::endl;
+      std::cout << "Nama: " << current->name << std::endl;
+      std::cout << "No Telepon: " << current->phoneNum << std::endl;
+      std::cout << "Deskripsi: " << current->desc << std::endl;
+      std::cout << "Status Antri: " << statusMap[current->status] << std::endl;
+      std::cout << "Waktu Antri: " << ctime(&current->time) << std::endl;
+    }
+    current = current->next;
+    ++i;
+  }
+}
