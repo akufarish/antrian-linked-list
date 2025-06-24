@@ -182,3 +182,27 @@ void Queue::_remove(const size_t index){
   current->next = tmp->next;
   delete tmp;
 }
+
+void Queue::show(){
+  /*
+    Fungsi untuk menampilkan keseluruhan data
+  */
+
+    if(_isNull())
+    {
+        return;
+    }
+    Node* current = head;
+    size_t i = 1;
+    while (current != nullptr)
+    {
+        std::cout << "Data ke-" << i << std::endl;
+        std::cout << "nama: " << current->name << std::endl;
+        std::cout << "No Telepon: " << current->phoneNum << std::endl;
+        std::cout << "Deskripsi: " << current->desc << std::endl;
+        std::cout << "Status antri: " << statusMap[current->status] << std::endl;
+        std::cout << "Waktu Antri: " << ctime(&current->time) << std::endl;
+        current = current->next;
+        ++i;
+    }
+}
