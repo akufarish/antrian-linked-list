@@ -241,3 +241,22 @@ void Queue::_insert(const size_t index, const std::string &name, const int phone
   newNode->next = current->next;
   current->next = newNode;
 }
+
+void Queue::updateStatus(size_t index, Status newStatus) {
+    if (_isNull()) 
+    {
+        std::cerr << "Data Kosong" << std::endl;
+        getch();
+        return;
+    }
+
+    Node* current = head;
+    while (current != nullptr)
+    {
+        if (current != nullptr && index == 0) {
+            current->status = newStatus;
+            return;
+        }
+        current = current->next;
+    }
+}
