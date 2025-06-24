@@ -392,14 +392,10 @@ void Queue::updateStatus(size_t index, Status newStatus) {
     }
 
     Node* current = head;
-    while (current != nullptr)
-    {
-        if (current != nullptr && index == 0) {
-            current->status = newStatus;
-            return;
-        }
-        current = current->next;
+    for(size_t i=0; i < index && current != nullptr; i++)    {
+      current = current->next;
     }
+  current->status=newStatus;
 }
 
 void Queue::showBasedOnStatus(Status status) {
