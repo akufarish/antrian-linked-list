@@ -58,3 +58,26 @@ struct Queue{
   void showmMenu();
   size_t size();
 };
+
+int main(int argc, char const *argv[])
+{
+    
+    return 0;
+}
+
+void Queue::showmMenu() {
+    system("cls");
+    std::cout << "\n=== MENU QUEUE LINKED LIST ===\n";
+    std::cout << "1. Tambah Data (Push)\n";
+    std::cout << "2. Hapus Data Pertama (Pop)\n";
+    std::cout << "3. Tampilkan Semua Data\n";
+    std::cout << "4. Hitung Jumlah Data\n";
+    std::cout << "5. Hapus Data pada Index (Remove)\n";
+    std::cout << "6. Insert Data pada Index\n";
+    std::cout << "7. Update Status data pada Index\n";
+    std::cout << "8. Tampilkan data berdasarkan status yang dipilih\n";
+    std::cout << "9. Tampilkan data berdasarkan deskripsi yang diketik\n";
+    std::cout << "0. Keluar\n";
+    std::cout << "\n==============================\n";
+    std::cout << "Pilih menu: ";
+}
