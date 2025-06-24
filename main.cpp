@@ -145,3 +145,40 @@ void Queue::pop(){
   head = head->next;
   delete tmp;
 }
+
+void Queue::_remove(const size_t index){
+  /*
+    Fungsi untuk melakukan remove pada indeks tertentu
+    Fungsi ini memiliki behavior dimana dia tidak bisa melakukan fungsionalitas yang sama dengan pop
+  */
+
+    std::cerr << "Warning: Remove isn't a original function from Queue" << std::endl;
+    getch();
+
+    if(_isNull())
+    {
+        return;
+    }
+    else if(index == 0 || index >= size())
+    {
+        std::cerr << "Error: Unexpected behavior, use pop instead!" << std::endl;
+        getch();
+        return;
+    }
+    
+    Node *current = head;
+    
+
+  for(size_t i = 1; i < index && current != nullptr; i++) // i dimulai dari satu karena current dimulai dari head
+  {
+    current = current->next;
+  }
+  
+  if(current->next == tail)
+  {
+    tail = current;
+  }
+  Node *tmp = current->next;
+  current->next = tmp->next;
+  delete tmp;
+}
